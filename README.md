@@ -15,4 +15,5 @@ https://docs.google.com/presentation/d/1c3hRJDCdKF0A1ygcKUgntKH1s7qEa3I3D7Dlz8nY
 transformers==4.13.0
 tensorflow==2.5.0
 ```
-Please run train.ipynb in the train directory to get the weights of our model
+Please run train.ipynb in the train directory to get the weights of our model. Please note: running it on CPU can take up to 10 hours (with GPU up to 1 hour).
+Alternatively, you can download the files from our Drive account. For that, please read the readme files from the corresponding directories.
