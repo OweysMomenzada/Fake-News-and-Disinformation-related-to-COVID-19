@@ -17,8 +17,12 @@ class FakeCovApp(object):
             if request.method == 'POST':
                 # fetch Tweets
                 if request.form['submitBtn'] == 'fetch-tweet':
-                    # TODO: get tweets via Tweepy
-                    dummy_val = 'FETCH TWEETS'
+                    dummy_val = self.get_tweets(
+                        search_string=request.form.get('searchString'),
+                        date_string=request.form.get('sinceDate'),
+                        tweet_amount=request.form.get('tweetAmount')
+                    )
+
                 # predict written text
                 elif request.form['submitBtn'] == 'predict-text':
                     text = request.form.get('ownText')
@@ -30,6 +34,10 @@ class FakeCovApp(object):
             )
 
         app.run(host=self.host, port=self.port, debug=self.debug_mode)
+
+    def get_tweets(self, search_string, date_string, tweet_amount):
+        # TODO: get tweets via Tweepy
+        return f'FETCH {tweet_amount} TWEETS words: \'{search_string}\' / date: \'{date_string}\''
 
     def predict(self, txt):
         self._preprocess(txt)
