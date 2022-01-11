@@ -1,0 +1,37 @@
+body {
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    background: #393e46;
+}
+
+.main-container {
+    height: 100%;
+    width: 100%;
+    color: #eeeeee;
+    background-color: #393e46;
+    display: flex;
+    justify-content: left;
+}
+
+.headline {
+    text-align: center;
+    color: #d65a31;
+}
+
+.input-container {
+    margin-left: 10px;
+    max-height: 700px;
+    width: 33%;
+    background-color: #222831;
+    padding: 10px;
+    border-radius: 10px;
+    overflow: auto;
+    color: #222831;
+}
+
+.btn-sub {
+    margin-top: 10px;
+    background: #393e46;
+    color: #d65a31;
+}
