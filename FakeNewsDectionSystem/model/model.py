@@ -1,6 +1,7 @@
 import numpy as np
 import pickle as pkl
 
+import tensorflow as tf
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.models import Sequential
@@ -19,18 +20,7 @@ X = np.load('FakeDetection.pkl', allow_pickle=True)
 class FakeCov:
 
     def __new__(self):
-        model = self.CovFake_model()
-        model.load_weights(model_path)
-
-        return model
-
-    @staticmethod
-    def CovFake_model():
-        model = Sequential()
-        model.add(Embedding(MAX_NB_WORDS, HIDDEN_DIM, input_length=X.shape[1]))
-        model.add(SpatialDropout1D(0.2))
-        model.add(LSTM(100, dropout=0.2, recurrent_dropout=0.2))
-        model.add(Dense(2, activation='softmax'))
+        model = tf.keras.models.load_model('fakeCovModel')
 
         return model
 
