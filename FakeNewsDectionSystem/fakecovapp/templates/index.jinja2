@@ -57,9 +57,35 @@
             </div>
         </div>
     </div>
-    <div>
-        {{ dummy_var }}
+    {% if show_table == true %}
+    <div class="result-container">
+        {% if predict_tweet_btn == true %}
+            <form id="predictTweetBtn" action="" method="post">
+                <button type="submit" name="submitBtn" id="predict-tweet-button" class="btn btn-sub" value="predict-tweet">
+                    Predict Tweets
+                </button>
+            </form>
+        {% endif %}
+        <table class="fixed-header table-striped">
+            <thead id="resultTableHead">
+                <tr>
+                    {% for column in table_columns %}
+                        <th>{{ column }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody id="resultTableBody">
+                {% for row in table_data %}
+                    <tr id="{{row[0]}}rowIdx">
+                        {% for col in row %}
+                            <td>{{ col }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
+    {% endif %}
 </div>
 <script src="../static/javascript/index.js"></script>
 </body>

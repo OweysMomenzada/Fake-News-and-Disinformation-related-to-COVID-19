@@ -30,8 +30,39 @@ body {
     color: #222831;
 }
 
+.result-container {
+    margin-left: 10px;
+    max-height: 700px;
+    width: 45%;
+    background-color: #222831;
+    padding: 10px;
+    border-radius: 10px;
+    overflow: auto;
+    color: #222831;
+}
+
 .btn-sub {
     margin-top: 10px;
     background: #393e46;
     color: #d65a31;
+}
+
+table {
+    width: 100%;
+    font-size:13px;
+    text-align: left;
+    position: relative;
+    border-collapse: collapse;
+    background-color: white;
+}
+th, td {
+    padding: 0.25rem;
+    border:1px solid #DDDDDD;
+}
+
+th {
+    background: white;
+    position: sticky;
+    top: 0; /* Don't forget this, required for the stickiness */
+    box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
 }
