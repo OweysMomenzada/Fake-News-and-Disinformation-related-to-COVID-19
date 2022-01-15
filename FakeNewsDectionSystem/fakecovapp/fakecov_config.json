@@ -11,5 +11,11 @@
   "tokenizer_path": "/Users/sorenspiegel/PycharmProjects/Fake-News-and-Disinformation-related-to-COVID-19/train/tokenizer.pkl",
   "model_data": {
     "data_path": "/model/FakeDetection.pkl"
+  },
+  "tweepy": {
+    "CONSUMER_KEY": "<>",
+    "CONSUMER_SECRET": "<>",
+    "ACCESS_TOKEN": "<>",
+    "ACCESS_TOKEN_SECRET": "<>"
   }
 }

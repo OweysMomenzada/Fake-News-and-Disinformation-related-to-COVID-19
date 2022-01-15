@@ -5,6 +5,7 @@ import json
 from flask import Flask, render_template, request
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.sequence import pad_sequences
+import tweepy
 
 
 class FakeCovApp(object):
@@ -14,7 +15,12 @@ class FakeCovApp(object):
         self.debug_mode = debug
         self.cfg = self._read_file(cfg_path, 'json')
         self.model = self._load_model()
-        self.tokenizer = self._read_file(self.cfg['tokenizer_path'], 'pkl')
+        self.tokenizer = self._read_file
+        # Tweepy
+        auth = tweepy.OAuthHandler(self.cfg['tweepy']['CONSUMER_KEY'], self.cfg['tweepy']['CONSUMER_SECRET'])
+        auth.set_access_token(self.cfg['tweepy']['ACCESS_TOKEN'], self.cfg['tweepy']['ACCESS_TOKEN_SECRET'])
+        self.twitter_api = tweepy.API(auth)
+
 
     def run(self):
         app = Flask(__name__)
@@ -46,8 +52,19 @@ class FakeCovApp(object):
         app.run(host=self.host, port=self.port, debug=self.debug_mode)
 
     def get_tweets(self, search_string, date_string, tweet_amount):
-        # TODO: get tweets via Tweepy
-        return f'FETCH {tweet_amount} TWEETS words: \'{search_string}\' / date: \'{date_string}\''
+        return_value = ''
+        for tweet in tweepy.Cursor(self.twitter_api.search_tweets, q=search_string, lang="en",
+                               since=date_string, tweet_mode='extended').items(int(tweet_amount)):
+            username = tweet.user.screen_name
+            try:
+                tweet_text = tweet.retweeted_status.full_text
+            except AttributeError:
+                tweet_text = tweet.full_text
+
+            return_value += f'Username: \'{username}\' Tweet: \'{tweet_text}\' \n'
+
+        return return_value
+
 
     def predict(self, txt):
         """
