@@ -1,0 +1,15 @@
+{
+  "base_path": "/Users/sorenspiegel/PycharmProjects/Fake-News-and-Disinformation-related-to-COVID-19/FakeNewsDectionSystem",
+  "model": {
+    "model_path": "/Users/sorenspiegel/PycharmProjects/Fake-News-and-Disinformation-related-to-COVID-19/train/m1_model",
+    "INPUT_SHAPE": 150,
+    "MAX_LEN": 512,
+    "MAX_NB_WORDS": 29000,
+    "MAX_SEQUENCE_LENGTH": 150,
+    "HIDDEN_DIM": 150
+  },
+  "tokenizer_path": "/Users/sorenspiegel/PycharmProjects/Fake-News-and-Disinformation-related-to-COVID-19/train/tokenizer.pkl",
+  "model_data": {
+    "data_path": "/model/FakeDetection.pkl"
+  }
+}
